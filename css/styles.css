@@ -28,16 +28,22 @@
     --gray-700: hsl(217deg, 10%, 30%);
     --gray-800: hsl(217deg, 10%, 20%);
     --gray-900: hsl(217deg, 10%, 10%);
-    --gray-950: hsl(220, 12%, 5%);
+    --gray-950: hsl(217deg, 12%, 5%);
 
     --black: #000;
     --white: #fff;
 
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-
     --transition-all: all 200ms ease-in-out;
 
     --nav-height: 5rem;
+
+    /* these can't be used in media queries but they are here for reference */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
 }
 
 * {
@@ -88,7 +94,7 @@ body {
     padding: 0.5rem;
 }
 
-.theme-toggler-checkbox:checked + .theme-toggle-track {
+.dark .theme-toggle-track {
     background-color: var(--white);
 }
 .theme-toggler-indicator {
@@ -101,7 +107,7 @@ body {
     background-color: var(--white);
     transition: var(--transition-all);
 }
-.theme-toggler-checkbox:checked ~ .theme-toggler-indicator {
+.dark .theme-toggler-indicator {
     right: 2.25rem;
     background-color: var(--gray-900);
 }
@@ -122,9 +128,16 @@ body {
 }
 
 .nav {
+    background-color: var(--gray-50);
+    z-index: 1;
     height: var(--nav-height);
+    position: relative;
+}
+.dark .nav {
+    background-color: var(--gray-950);
 }
 .nav .container {
+    height: var(--nav-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -132,12 +145,25 @@ body {
 
 .categories-menu {
     height: var(--nav-height);
-    display: flex;
     list-style-type: none;
     align-items: center;
+    display: flex;
     gap: 0.5rem;
 }
-
+.categories-menu.vertical {
+    flex-direction: column;
+    height: auto;
+    align-items: start;
+}
+.categories-menu.main-categories-menu {
+    display: none;
+}
+.right {
+    display: flex;
+    gap: 1rem;
+    height: var(--nav-height);
+    align-items: center;
+}
 .categories-button {
     border: none;
     display: block;
@@ -146,7 +172,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--gray-500);
     border-radius: 9999px;
     background-color: transparent;
@@ -178,4 +204,109 @@ body {
 .dark .categories-button.active {
     color: var(--primary-200);
     background-color: var(--primary-800);
+}
+.category-btn {
+    height: 2.75rem;
+    width: 2.75rem;
+    background-image: url("../img/categories-primary.svg");
+    background-repeat: no-repeat;
+    background-size: 1.75;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 9999px;
+}
+.dark .category-btn {
+    background-image: url("../img/categories-white.svg");
+}
+
+.dark .category-btn:hover {
+    background-color: var(--gray-800);
+}
+.category-btn:hover {
+    background-color: var(--gray-100);
+}
+
+.category-btn:focus {
+    outline-width: 4px;
+    outline-offset: 4px;
+    outline-color: var(--primary-500);
+}
+
+@media screen and (min-width: 640px) {
+    .categories-menu.main-categories-menu {
+        display: flex;
+    }
+    .category-btn {
+        display: none;
+    }
+}
+
+.drawer-wrapper {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    transition: var(--transition-all);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+.drawer-wrapper.shown {
+    opacity: 1;
+    visibility: visible;
+}
+.dark .drawer-wrapper {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.drawer {
+    transition: var(--transition-all);
+    position: absolute;
+    height: 100vh;
+    width: 320px;
+    right: 0;
+    background-color: white;
+    box-shadow: var(--shadow);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+}
+.shown .drawer {
+    transform: translateX(0);
+}
+.dark .drawer {
+    background-color: var(--gray-900);
+}
+.drawer-head {
+    height: var(--nav-height);
+    width: 100%;
+    display: flex;
+    padding: 0 10vw;
+    align-items: center;
+    justify-content: space-between;
+}
+.brand-logo {
+    height: 3rem;
+}
+.close-btn {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-image: url("../img/close-primary.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+.dark .close-btn {
+    background-image: url("../img/close-white.svg");
+}
+.drawer-body {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
