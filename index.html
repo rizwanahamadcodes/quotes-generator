@@ -7,26 +7,57 @@
         <link rel="stylesheet" href="./css/styles.css" />
     </head>
     <body>
-        <main class="main">
+        <nav class="nav">
             <div class="container">
-                <label for="theme-toggler-checkbox" class="theme-toggler-label">
-                    <input
-                        type="checkbox"
-                        id="theme-toggler-checkbox"
-                        class="theme-toggler-checkbox" />
-                    <div class="theme-toggle-track">
-                        <img
-                            src="./img/sun-white.svg"
-                            alt=""
-                            class="theme-toggler-icon" />
-                        <img
-                            src="./img/moon-black.svg"
-                            alt=""
-                            class="theme-toggler-icon" />
-                    </div>
-                    <div class="theme-toggler-indicator"></div>
-                </label>
+                <div class="left">
+                    <div class="logo"></div>
+                </div>
+                <div class="center">
+                    <ul class="categories-menu">
+                        <li class="categories-menu-item">
+                            <button class="categories-button">All</button>
+                        </li>
+                        <li class="categories-menu-item active">
+                            <button class="categories-button active">
+                                Success
+                            </button>
+                        </li>
+                        <li class="categories-menu-item">
+                            <button class="categories-button">Wisdom</button>
+                        </li>
+                        <li class="categories-menu-item">
+                            <button class="categories-button">Funny</button>
+                        </li>
+                        <li class="categories-menu-item">
+                            <button class="categories-button">Love</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <label
+                        for="theme-toggler-checkbox"
+                        class="theme-toggler-label">
+                        <input
+                            type="checkbox"
+                            id="theme-toggler-checkbox"
+                            class="theme-toggler-checkbox" />
+                        <div class="theme-toggle-track">
+                            <img
+                                src="./img/sun-white.svg"
+                                alt=""
+                                class="theme-toggler-icon" />
+                            <img
+                                src="./img/moon-black.svg"
+                                alt=""
+                                class="theme-toggler-icon" />
+                        </div>
+                        <div class="theme-toggler-indicator"></div>
+                    </label>
+                </div>
             </div>
+        </nav>
+        <main class="main">
+            <div class="container"></div>
         </main>
 
         <script src="./js/themeToggler.js"></script>
