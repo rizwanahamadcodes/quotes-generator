@@ -155,6 +155,9 @@ body {
     height: auto;
     align-items: start;
 }
+.categories-menu.vertical .categories-menu-item {
+    width: 100%;
+}
 .categories-menu.main-categories-menu {
     display: none;
 }
@@ -181,6 +184,10 @@ body {
 }
 .dark .categories-button {
     color: var(--gray-400);
+}
+.vertical .categories-button {
+    width: 100%;
+    justify-content: start;
 }
 .categories-button:hover {
     background-color: var(--gray-100);
