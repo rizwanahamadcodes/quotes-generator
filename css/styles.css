@@ -21,4 +21,75 @@
     --gray-700: hsl(217deg, 10%, 30%);
     --gray-800: hsl(217deg, 10%, 20%);
     --gray-900: hsl(217deg, 10%, 10%);
+
+    --black: #000;
+    --white: #fff;
+
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+    --transition-all: all 200ms ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    font-family: "Calibri", sans-serif;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1440px;
+}
+.theme-toggler-label {
+    display: block;
+    position: relative;
+    width: 4rem;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 9999px;
+    box-shadow: var(--shadow);
+}
+.theme-toggler-checkbox {
+    position: absolute;
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+.theme-toggle-track {
+    display: flex;
+    transition: var(--transition-all);
+    height: 2rem;
+    width: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 9999px;
+    background-color: var(--primary-500);
+    padding: 0.5rem;
+}
+
+.theme-toggler-checkbox:checked + .theme-toggle-track {
+    background-color: var(--white);
+}
+/* absolute right-0.25 top-0.25 h-1.5 w-1.5 rounded-full bg-white transition-all peer-checked/themeToggler:right-2.25 peer-checked/themeToggler:bg-gray-900 */
+.theme-toggler-indicator {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 9999px;
+    background-color: var(--white);
+    transition: var(--transition-all);
+}
+.theme-toggler-checkbox:checked ~ .theme-toggler-indicator {
+    right: 2.25rem;
+    background-color: var(--gray-900);
+}
+.theme-toggler-icon {
+    height: 1.25rem;
+    width: 1.25rem;
 }
