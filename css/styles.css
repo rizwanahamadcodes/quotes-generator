@@ -4,6 +4,12 @@
     font-display: swap;
     font-style: normal;
 }
+@font-face {
+    font-family: "Gill Sans Bold";
+    src: url("../fonts/gill-sans-ultra-bold.ttf") format("truetype");
+    font-display: swap;
+    font-style: normal;
+}
 
 :root {
     --primary-50: #eff5ff;
@@ -26,7 +32,7 @@
     --gray-500: hsl(217deg, 10%, 50%);
     --gray-600: hsl(217deg, 10%, 40%);
     --gray-700: hsl(217deg, 10%, 30%);
-    --gray-800: hsl(217deg, 10%, 20%);
+    --gray-800: hsl(216deg, 10%, 20%);
     --gray-900: hsl(217deg, 10%, 10%);
     --gray-950: hsl(217deg, 12%, 5%);
 
@@ -316,4 +322,40 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+.quote-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.quote {
+    font-size: 5rem;
+    text-align: center;
+    color: var(--gray-800);
+}
+.dark .quote {
+    color: var(--gray-200);
+}
+.author-wrapper {
+    font-size: 1.25rem;
+    align-self: flex-end;
+    color: var(--gray-900);
+}
+.dark .author-wrapper {
+    color: var(--gray-100);
+}
+.quotation-mark {
+    font-family: "Gill Sans Bold";
+}
+.quotation-mark.start {
+    transform: rotate(180deg);
+}
+.main {
+    height: calc(100vh - var(--nav-height));
+}
+.main .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
 }
