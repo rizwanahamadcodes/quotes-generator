@@ -350,12 +350,33 @@ body {
     transform: rotate(180deg);
 }
 .main {
-    height: calc(100vh - var(--nav-height));
 }
 .main .container {
-    height: 100%;
+    padding: 3rem 0;
+    height: calc(100vh - var(--nav-height));
     display: flex;
     flex-direction: column;
+}
+.controls-wrapper {
+    display: flex;
+    gap: 1rem;
     justify-content: center;
-    overflow: hidden;
+}
+.btn {
+    height: 3rem;
+    padding: 0 1.5rem;
+    border: none;
+    border-radius: 9999px;
+    background-color: var(--primary-500);
+    color: white;
+    cursor: pointer;
+}
+.btn.btn-outline {
+    border: 2px solid var(--primary-500);
+    background-color: transparent;
+    color: var(--primary-500);
+}
+.btn.btn-round {
+    padding: 0;
+    width: 3rem;
 }
