@@ -21,6 +21,7 @@
     --gray-700: hsl(217deg, 10%, 30%);
     --gray-800: hsl(217deg, 10%, 20%);
     --gray-900: hsl(217deg, 10%, 10%);
+    --gray-950: hsl(217deg, 10%, 5%);
 
     --black: #000;
     --white: #fff;
@@ -74,7 +75,6 @@ body {
 .theme-toggler-checkbox:checked + .theme-toggle-track {
     background-color: var(--white);
 }
-/* absolute right-0.25 top-0.25 h-1.5 w-1.5 rounded-full bg-white transition-all peer-checked/themeToggler:right-2.25 peer-checked/themeToggler:bg-gray-900 */
 .theme-toggler-indicator {
     position: absolute;
     right: 0.25rem;
