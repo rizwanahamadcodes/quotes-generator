@@ -1,21 +1,38 @@
-const categoryBtn = document.querySelector("#category-btn");
-const drawerWrapper = document.querySelector("#drawer-wrapper");
-const closeBtn = document.querySelector("#close-btn");
+import categories from "../data/categories.js";
 
-const handleCategoryBtnClick = () => {
-    drawerWrapper.classList.toggle("shown");
+let activeCategoryId = 1;
+
+const updateCategories = () => {
+    populateCategoriesMenu(".main-categories-menu");
+    populateCategoriesMenu(".drawer-categories-menu");
+};
+updateCategories();
+
+const changeActiveCategory = (categoryId) => {
+    activeCategoryId = categoryId;
+    updateCategories();
 };
 
-const handleCloseBtnClick = () => {
-    drawerWrapper.classList.remove("shown");
-};
+function populateCategoriesMenu(menuSelector) {
+    const menu = document.querySelector(menuSelector);
+    menu.innerHTML = "";
 
-const handleDrawerWrapperClick = (e) => {
-    if (e.target.classList.contains("drawer-wrapper")) {
-        drawerWrapper.classList.remove("shown");
-    }
-};
+    categories.forEach((category) => {
+        const li = document.createElement("li");
+        li.classList.add("categories-menu-item");
 
-categoryBtn.addEventListener("click", handleCategoryBtnClick);
-closeBtn.addEventListener("click", handleCloseBtnClick);
-drawerWrapper.addEventListener("click", handleDrawerWrapperClick);
+        const button = document.createElement("button");
+        if (category.id === activeCategoryId) {
+            button.classList.add("active");
+        }
+
+        button.classList.add("categories-button");
+        button.textContent = category.name;
+        button.addEventListener("click", () => {
+            changeActiveCategory(category.id);
+        });
+
+        li.appendChild(button);
+        menu.appendChild(li);
+    });
+}

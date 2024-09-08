@@ -54,6 +54,7 @@
                         <div class="theme-toggler-indicator"></div>
                     </label>
                     <button class="category-btn" id="category-btn"></button>
+                    <!-- Drawer start -->
                     <div class="drawer-wrapper" id="drawer-wrapper">
                         <div class="drawer">
                             <div class="drawer-head">
@@ -64,7 +65,8 @@
                                 <div id="close-btn" class="close-btn"></div>
                             </div>
                             <div class="drawer-body">
-                                <ul class="categories-menu vertical">
+                                <ul
+                                    class="categories-menu vertical drawer-categories-menu">
                                     <li class="categories-menu-item">
                                         <button class="categories-button">
                                             All
@@ -115,24 +117,23 @@
                             <div class="drawer-foot"></div>
                         </div>
                     </div>
+                    <!-- Drawer end -->
                 </div>
             </div>
         </nav>
         <main class="main">
             <div class="container">
-                <div class="quote-wrapper">
-                    <p class="quote">
-                        <span class="quotation-mark">“</span>
-                        Success is not final, failure is not fatal, It is the
-                        courage to continue that countt final, failure is not
-                        fatal, It is the courage to continue that counts.
-                        <span class="quotation-mark">”</span>
-                    </p>
-                    <p class="author-wrapper">
-                        <span class="dash">-</span>
-                        <span>Winston Churchill</span>
-                    </p>
-                </div>
+                <p class="quote">
+                    <span class="quotation-mark">“</span>
+                    Success is not final, failure is not fatal, It is the
+                    courage to continue that countt final, failure is not fatal,
+                    It is the courage to continue that counts.
+                    <span class="quotation-mark">”</span>
+                </p>
+                <p class="author-wrapper">
+                    <span class="dash">-</span>
+                    <span>Winston Churchill</span>
+                </p>
             </div>
         </main>
 
@@ -148,7 +149,8 @@
             </div>
         </footer>
 
+        <script src="./js/drawer.js"></script>
         <script src="./js/themeToggler.js"></script>
-        <script src="./js/main.js"></script>
+        <script src="./js/main.js" type="module"></script>
     </body>
 </html>
