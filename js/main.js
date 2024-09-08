@@ -2,8 +2,9 @@ import categories from "../data/categories.js";
 import quotes from "../data/quotes.js";
 
 let activeCategoryId = categories[0].id;
-let quoteHistory = [];
+let quotesHistory = [];
 let historyIndex = -1;
+let categorizedQuoteIndex = 0;
 
 const getQuotesByCategoryId = (categoryId) => {
     return quotes.filter((quote) => quote.categoryId === categoryId);
@@ -14,12 +15,23 @@ const getQuoteById = (id) => {
 };
 const pushFirstActiveQuoteToHistory = () => {
     const activeQuotes = getQuotesByCategoryId(activeCategoryId);
-    quoteHistory.push(activeQuotes[0]?.id);
+    quotesHistory.push(activeQuotes[0]?.id);
 };
 
-const showLastQuote = () => {
-    console.log(quoteHistory, historyIndex);
-    updateQuoteDisplay(getQuoteById(quoteHistory[quoteHistory.length - 1]));
+const pushCategorisedQuote = () => {
+    const activeQuotes = getQuotesByCategoryId(activeCategoryId);
+    if (categorizedQuoteIndex > activeQuotes.length - 1) {
+        categorizedQuoteIndex = 0;
+    }
+    quotesHistory.push(activeQuotes[categorizedQuoteIndex]?.id);
+};
+
+const showLastQuoteFromHistory = () => {
+    updateQuoteDisplay(getQuoteById(quotesHistory[quotesHistory.length - 1]));
+};
+
+const showCurrentQuoteFromHistory = () => {
+    updateQuoteDisplay(getQuoteById(quotesHistory[historyIndex]));
 };
 
 const changeActiveCategory = (categoryId) => {
@@ -27,10 +39,11 @@ const changeActiveCategory = (categoryId) => {
         return;
     }
 
+    categorizedQuoteIndex = 0;
     activeCategoryId = categoryId;
     pushFirstActiveQuoteToHistory();
     historyIndex++;
-    showLastQuote();
+    showLastQuoteFromHistory();
     populateAllCategoriesMenu();
 };
 
@@ -59,6 +72,7 @@ function populateCategoriesMenu(menuSelector) {
 }
 
 const updateQuoteDisplay = (quote) => {
+    console.log(quotesHistory, historyIndex);
     const quoteTextElement = document.querySelector(".quote");
     const quoteAuthorElement = document.querySelector(
         ".author-wrapper span:last-child"
@@ -84,6 +98,32 @@ const updateQuoteDisplay = (quote) => {
     quoteAuthorElement.textContent = quote.author;
 };
 
+const activateProperCategory = () => {
+    activeCategoryId = getQuoteById(quotesHistory[historyIndex]).categoryId;
+    populateAllCategoriesMenu();
+};
+
+const showNextQuote = () => {
+    if (historyIndex < quotesHistory.length - 1) {
+        historyIndex++;
+        showCurrentQuoteFromHistory();
+        activateProperCategory();
+    } else {
+        categorizedQuoteIndex++;
+        pushCategorisedQuote();
+        historyIndex++;
+        showLastQuoteFromHistory();
+    }
+};
+
+const showPrevQuote = () => {
+    if (historyIndex > 0) {
+        historyIndex--;
+        showCurrentQuoteFromHistory();
+        activateProperCategory();
+    }
+};
+
 const populateAllCategoriesMenu = () => {
     populateCategoriesMenu(".main-categories-menu");
     populateCategoriesMenu(".drawer-categories-menu");
@@ -93,5 +133,13 @@ window.addEventListener("DOMContentLoaded", () => {
     populateAllCategoriesMenu();
     pushFirstActiveQuoteToHistory();
     historyIndex++;
-    showLastQuote();
+    showLastQuoteFromHistory();
 });
+
+document
+    .getElementById("next-quote-btn")
+    .addEventListener("click", showNextQuote);
+
+document
+    .getElementById("prev-quote-btn")
+    .addEventListener("click", showPrevQuote);
