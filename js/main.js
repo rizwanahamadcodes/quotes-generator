@@ -155,3 +155,28 @@ document
 document
     .getElementById("random-quote-btn")
     .addEventListener("click", showRandomQuote);
+
+const updateFontSize = (change) => {
+    const quoteTextElement = document.querySelector(".quote");
+    const currentFontSize = window.getComputedStyle(quoteTextElement).fontSize;
+    const currentSizeInPx = parseFloat(currentFontSize);
+
+    const newSizeInPx = currentSizeInPx + change;
+    if (newSizeInPx <= 8) {
+        return;
+    }
+    const newSize = `${newSizeInPx}px`;
+
+    quoteTextElement.style.fontSize = newSize;
+};
+
+const increaseFontSize = () => updateFontSize(8);
+
+const decreaseFontSize = () => updateFontSize(-8);
+
+document
+    .getElementById("increase-font-size-btn")
+    .addEventListener("click", increaseFontSize);
+document
+    .getElementById("decrease-font-size-btn")
+    .addEventListener("click", decreaseFontSize);

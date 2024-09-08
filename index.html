@@ -122,7 +122,20 @@
             </div>
         </nav>
         <main class="main">
-            <div class="container">
+            <div class="container font-settings-container">
+                <button
+                    id="decrease-font-size-btn"
+                    class="btn btn-gray-500 btn-outline btn-round">
+                    <img
+                        src="./img/decrease-font-size-gray-500.svg"
+                        alt="" /></button
+                ><button
+                    id="increase-font-size-btn"
+                    class="btn btn-gray-500 btn-outline btn-round">
+                    <img src="./img/increase-font-size-gray-500.svg" alt="" />
+                </button>
+            </div>
+            <div class="container main-container">
                 <p class="quote">
                     <span class="quotation-mark">“</span>
                     Success is not final, failure is not fatal, It is the
@@ -138,11 +151,17 @@
 
         <footer>
             <div class="controls-wrapper">
-                <button id="prev-quote-btn" class="btn btn-outline btn-round">
+                <button
+                    id="prev-quote-btn"
+                    class="btn btn-primary btn-outline btn-round">
                     <img src="./img/chevron-left-primary.svg" alt="" />
                 </button>
-                <button id="random-quote-btn" class="btn">Random</button>
-                <button id="next-quote-btn" class="btn btn-outline btn-round">
+                <button id="random-quote-btn" class="btn btn-primary">
+                    Random
+                </button>
+                <button
+                    id="next-quote-btn"
+                    class="btn btn-primary btn-outline btn-round">
                     <img src="./img/chevron-right-primary.svg" alt="" />
                 </button>
             </div>
