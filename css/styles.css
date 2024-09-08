@@ -337,7 +337,7 @@ body {
     text-align: center;
     color: var(--gray-800);
     margin-bottom: 1rem;
-    flex-grow: 1;
+    margin: auto;
     overflow: scroll;
 }
 
@@ -389,11 +389,6 @@ body {
     flex-direction: column;
     height: 100%;
     align-items: center;
-}
-@media screen and (min-width: 1024px) {
-    .main .main-container {
-        justify-content: center;
-    }
 }
 
 .font-settings-container {
