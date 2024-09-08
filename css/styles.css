@@ -59,11 +59,14 @@
 }
 html,
 body {
-    font-family: "Montserrat", "Calibri", "sans-serif";
-    min-height: 100vh;
-    background-color: var(--gray-50);
+    height: 100%;
 }
+html,
 body {
+    font-family: "Montserrat", "Calibri", "sans-serif";
+    background-color: var(--gray-50);
+    display: flex;
+    flex-direction: column;
 }
 .dark body {
     background-color: var(--gray-950);
@@ -326,11 +329,14 @@ body {
 .quote-wrapper {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
+    flex-grow: 1;
 }
 .quote {
-    font-size: 5rem;
+    font-size: 3rem;
     text-align: center;
     color: var(--gray-800);
+    margin-bottom: 1rem;
 }
 .dark .quote {
     color: var(--gray-200);
@@ -350,17 +356,28 @@ body {
     transform: rotate(180deg);
 }
 .main {
+    flex-grow: 1;
+    overflow-y: auto;
 }
+.main::-webkit-scrollbar {
+    width: 4px;
+}
+.main::-webkit-scrollbar-thumb {
+    background-color: var(--gray-500);
+    border-radius: 999px;
+}
+
 .main .container {
     padding: 3rem 0;
-    height: calc(100vh - var(--nav-height));
     display: flex;
     flex-direction: column;
 }
 .controls-wrapper {
+    height: var(--nav-height);
     display: flex;
-    gap: 1rem;
+    align-items: center;
     justify-content: center;
+    gap: 1rem;
 }
 .btn {
     height: 3rem;
