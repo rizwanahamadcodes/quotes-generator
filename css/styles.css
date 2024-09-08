@@ -336,7 +336,6 @@ body {
     font-size: 2rem;
     text-align: center;
     color: var(--gray-800);
-    margin-bottom: 1rem;
     margin: auto;
     overflow: scroll;
 }
@@ -375,25 +374,18 @@ body {
     flex-grow: 1;
     overflow-y: auto;
 }
-.main::-webkit-scrollbar {
-    width: 4px;
-}
-.main::-webkit-scrollbar-thumb {
-    background-color: var(--gray-500);
-    border-radius: 999px;
-}
 
-.main .main-container {
-    padding: 3rem 0;
+.main .container {
     display: flex;
     flex-direction: column;
     height: 100%;
     align-items: center;
 }
 
-.font-settings-container {
+.settings-wrapper {
     display: flex;
     justify-content: flex-end;
+    width: 100%;
     gap: 1rem;
 }
 .controls-wrapper {
