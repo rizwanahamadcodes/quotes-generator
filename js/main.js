@@ -123,7 +123,16 @@ const showPrevQuote = () => {
         activateProperCategory();
     }
 };
+const showRandomQuote = () => {
+    const activeQuotes = getQuotesByCategoryId(activeCategoryId);
+    const randomIndex = Math.floor(Math.random() * activeQuotes.length);
+    const randomQuote = activeQuotes[randomIndex];
 
+    quotesHistory.splice(historyIndex + 1, 0, randomQuote.id);
+    historyIndex++;
+
+    showCurrentQuoteFromHistory();
+};
 const populateAllCategoriesMenu = () => {
     populateCategoriesMenu(".main-categories-menu");
     populateCategoriesMenu(".drawer-categories-menu");
@@ -143,3 +152,6 @@ document
 document
     .getElementById("prev-quote-btn")
     .addEventListener("click", showPrevQuote);
+document
+    .getElementById("random-quote-btn")
+    .addEventListener("click", showRandomQuote);
